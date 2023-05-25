@@ -6,12 +6,12 @@
 #    By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/01 16:33:04 by dtorres-          #+#    #+#              #
-#    Updated: 2023/04/03 11:32:25 by dtorres-         ###   ########.fr        #
+#    Updated: 2023/05/25 16:39:23 by dtorres-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-PROG = operations1.c utilities.c pushswap_main.c
+PROG = operations1.c utilities.c pushswap_main.c extra_functions.c
 OBJS = ${PROG:.c=.o}
 CFLAGS = -Wall -Wextra -Werror
 ##$(NAME): $(OBJS)

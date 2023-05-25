@@ -6,7 +6,7 @@
 /*   By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 15:23:42 by dtorres-          #+#    #+#             */
-/*   Updated: 2023/03/12 15:33:11 by dtorres-         ###   ########.fr       */
+/*   Updated: 2023/04/16 16:18:17 by dtorres-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_afternl(char *str)
 {
 	int		i;
 	char	*copy;
-	int		final;
+	int		endal;
 
 	i = 0;
 	while (str[i] != '\n' && str[i] != '\0')
@@ -54,15 +54,15 @@ char	*ft_afternl(char *str)
 		free(str);
 		return (NULL);
 	}
-	final = ft_strlen(str) - i;
-	copy = (char *)malloc(sizeof(char) * (final + 1));
+	endal = ft_strlen(str) - i;
+	copy = (char *)malloc(sizeof(char) * (endal + 1));
 	if (!copy)
 		return (NULL);
 	i++;
-	final = 0;
+	endal = 0;
 	while (str[i] != '\0')
-		copy[final++] = str[i++];
-	copy[final] = '\0';
+		copy[endal++] = str[i++];
+	copy[endal] = '\0';
 	free(str);
 	return (copy);
 }

@@ -6,7 +6,7 @@
 /*   By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 11:19:42 by dtorres-          #+#    #+#             */
-/*   Updated: 2023/04/03 15:18:30 by dtorres-         ###   ########.fr       */
+/*   Updated: 2023/04/16 16:38:13 by dtorres-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char		*ft_strrchr(const char *s, int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
-char		*ft_strnstr(const char *hayt_stack, const char *needle, size_t len);
+char		*ft_strnstr(const char *hayt_list, const char *needle, size_t len);
 long long	ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
