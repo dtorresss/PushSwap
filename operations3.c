@@ -1,50 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extra_functions.c                                  :+:      :+:    :+:   */
+/*   operations3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 16:33:41 by dtorres-          #+#    #+#             */
-/*   Updated: 2023/05/30 17:34:59 by dtorres-         ###   ########.fr       */
+/*   Created: 2023/05/30 15:23:27 by dtorres-          #+#    #+#             */
+/*   Updated: 2023/05/30 16:17:21 by dtorres-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	show_list(t_stack *l)
+void	delete_last(t_stack *a)
 {
-	t_node	*aux;
+	t_stack	act;
 
-	aux = *l;
-	while (aux != NULL)
-	{
-		ft_printf("%d\n", aux->nbr);
-		aux = aux->next;
-	}
+	act = *a;
+	while (act->next != NULL)
+		act = act->next;
+	act->prev->next = NULL;
 }
 
-int	is_ordered(t_stack l)
+void	rra(t_stack *a)
 {
-	int		i;
+	int		size_s;
+	int		nbr;
 	t_node	*aux;
 
-	i = 0;
-	aux = l;
+	aux = *a;
+	size_s = size(a);
 	while (aux->next != NULL)
+		aux = aux->next;
+	nbr = aux->nbr;
+	if (size_s == 2)
+		sa(a);
+	if (size_s > 2)
 	{
-		if (aux->nbr < aux->next->nbr)
-			aux = aux->next;
-		else
-			return (0);
+		insert_by_start(a, nbr);
+		delete_last(a);
 	}
-	return (1);
 }
 
-void	order(t_stack *a)
+void	rrb(t_stack *b)
 {
-	t_stack	b;
+	rra(b);
+}
 
-	create_empty(&b);
-	*a = NULL;
+void	rrr(t_stack *a, t_stack *b)
+{
+	rra(a);
+	rra(b);
 }

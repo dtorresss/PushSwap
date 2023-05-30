@@ -6,7 +6,7 @@
 /*   By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 16:46:16 by dtorres-          #+#    #+#             */
-/*   Updated: 2023/05/25 16:46:01 by dtorres-         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:17:18 by dtorres-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,14 @@ int	read_nbrs(char **arr, int count, t_stack *s)
 int	main(int argc, char **argv)
 {
 	t_stack	a;
-	t_stack	b;
-
+	
+	create_empty(&a);
 	if (read_nbrs(argv, argc, &a) == 0)
 	{
+		if (is_ordered(a) == 0)
+			order(&a);
 	}
+	return (0);
 }
 
 /*ft_printf("Primero la lista sin cambiar los dos primeros\n");
@@ -117,6 +120,16 @@ int	main(int argc, char **argv)
 		ft_printf("Los dos elementos del stack de a cambiados\n");
 		show_list(&a);
 		ft_printf("Los dos elementos del stack de b cambiados\n");
+		show_list(&b);
+		rr(&a, &b);
+		ft_printf("Todos los elementos de a rotados hacia arriba\n");
+		show_list(&a);
+		ft_printf("Ahora los de b\n");
+		show_list(&b);
+		rrr(&a, &b);
+		ft_printf("Todos los elementos de a rotados hacia abajo\n");
+		show_list(&a);
+		ft_printf("Ahora los de b\n");
 		show_list(&b);*/
 /*
 Se puede usar write, read, malloc, free y exit*/

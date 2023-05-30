@@ -6,7 +6,7 @@
 /*   By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:04:33 by dtorres-          #+#    #+#             */
-/*   Updated: 2023/05/25 16:34:17 by dtorres-         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:01:18 by dtorres-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,44 @@
 
 void	create_empty(t_stack *l)
 {
-	l->start = NULL;
-	l->end = NULL;
+	*l = NULL;
 }
 
 void	insert_by_start(t_stack *l, long long nbr)
 {
 	t_node	*aux;
 
-	aux = (t_node *)malloc(sizeof(t_node));
+	aux = (t_node *)malloc(1*sizeof(t_node));
 	aux->nbr = nbr;
-	aux->next = l->start;
-	if (is_empty(l))
-		l->end = aux;
-	l->start = aux;
+	aux->next = *l;
+	aux->prev = NULL;
+	if (!is_empty(l))
+		(*l)->prev = aux;
+	(*l) = aux;
 }
 
 int	is_empty(t_stack *l)
 {
-	return ((l->start == NULL) && (l->end == NULL));
+	return (*l == NULL);
 }
 
 void	insert_by_end(t_stack *l, long long nbr)
 {
 	t_node	*aux;
+	t_stack	act;
 
 	if (is_empty(l))
 		insert_by_start(l, nbr);
 	else
 	{
+		act = *l;
+		while (act->next != NULL)
+			act = act->next;
 		aux = (t_node *) malloc(sizeof(t_node));
 		aux->nbr = nbr;
+		act->next = aux;
+		aux->prev = act;
 		aux->next = NULL;
-		l->end->next = aux;
-		l->end = aux;
 	}
 }
 
@@ -60,7 +64,7 @@ int	size(t_stack *l)
 	int		i;
 
 	i = 0;
-	aux = l->start;
+	aux = *l;
 	while (aux != NULL)
 	{
 		aux = aux->next;

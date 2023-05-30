@@ -6,17 +6,15 @@
 #    By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/01 16:33:04 by dtorres-          #+#    #+#              #
-#    Updated: 2023/05/25 16:39:23 by dtorres-         ###   ########.fr        #
+#    Updated: 2023/05/30 17:02:05 by dtorres-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-PROG = operations1.c utilities.c pushswap_main.c extra_functions.c
+PROG = operations1.c operations2.c operations3.c utilities.c pushswap_main.c extra_functions.c
 OBJS = ${PROG:.c=.o}
-CFLAGS = -Wall -Wextra -Werror
-##$(NAME): $(OBJS)
-##	make -C libft/
-##	gcc $(CFLAGS) -c $(PROG) | ar -rcs $(NAME) $(OBJS) libft/*.o
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+
 $(NAME): $(OBJS)
 	make -C libft/
 	gcc $(CFLAGS) $(OBJS) ./libft/libft.a -o $(NAME)
