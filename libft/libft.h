@@ -89,10 +89,4 @@ int			ft_printhex_up(unsigned long long nbr, int fd);
 void		ft_reverse(char	*str, int max);
 int			ft_itohex(unsigned long long nbr, char *hex);
 
-//GNL
-char		*get_next_line(int fd);
-char		*ft_read_str(int fd, char *str);
-int			ft_newline(char *str);
-char		*ft_beforenl(char *str);
-char		*ft_afternl(char *str);
 #endif

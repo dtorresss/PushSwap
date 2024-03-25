@@ -22,7 +22,7 @@ void	delete_last(t_stack *a)
 	act->prev->next = NULL;
 }
 
-void	rra(t_stack *a)
+void	rra(t_stack *a, int i)
 {
 	int		size_s;
 	int		nbr;
@@ -34,21 +34,27 @@ void	rra(t_stack *a)
 		aux = aux->next;
 	nbr = aux->nbr;
 	if (size_s == 2)
-		sa(a);
+		sa(a, i);
 	if (size_s > 2)
 	{
 		insert_by_start(a, nbr);
 		delete_last(a);
 	}
+	if (i == 1)
+	{
+		ft_printf("rrb\n");
+		return ;
+	}
+	ft_printf("rra\n");
 }
 
 void	rrb(t_stack *b)
 {
-	rra(b);
+	rra(b, 1);
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
-	rra(a);
-	rra(b);
+	rra(a, 0);
+	rra(b, 1);
 }

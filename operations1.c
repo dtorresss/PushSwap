@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-void	sa(t_stack *a)
+void	sa(t_stack *a, int i)
 {
 	long long	e1;
 	long long	e2;
@@ -24,20 +24,26 @@ void	sa(t_stack *a)
 		(*a)->nbr = e2;
 		(*a)->next->nbr = e1;
 	}
+	if (i == 1)
+	{
+		ft_printf("sb\n");
+		return ;
+	}
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
-	sa(b);
+	sa(b, 1);
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
-	sa(a);
-	sa(b);
+	sa(a, 0);
+	sa(b, 1);
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_stack *a, t_stack *b, int i)
 {
 	long long	e1;
 
@@ -47,9 +53,15 @@ void	pa(t_stack *a, t_stack *b)
 		insert_by_start(a, e1);
 		*b = (*b)->next;
 	}
+	if (i == 1)
+	{
+		ft_printf("pb\n");
+		return ;
+	}
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
-	pa(b, a);
+	pa(b, a, 1);
 }

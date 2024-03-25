@@ -6,7 +6,7 @@
 /*   By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 16:46:16 by dtorres-          #+#    #+#             */
-/*   Updated: 2023/05/30 17:17:18 by dtorres-         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:51:37 by dtorres-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,53 +83,63 @@ int	read_nbrs(char **arr, int count, t_stack *s)
 		j = checker(arr[i], arr, i);
 		if (j == 1)
 		{
-			ft_printf("Error\n");
-			return (1);
+			ft_putstr_fd("Error\n", 2);
+			return (0);
 		}
 		i++;
 	}
 	stake_nbrs(count, arr, s);
-	return (0);
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	a;
-	
+	t_stack	b;
+
 	create_empty(&a);
-	if (read_nbrs(argv, argc, &a) == 0)
+	create_empty(&b);
+	if (read_nbrs(argv, argc, &a) == 1)
 	{
 		if (is_ordered(a) == 0)
-			order(&a);
+		{
+			if (argc == 3)
+				sa(&a, 0);
+			else if (argc == 4)
+				order_three(&a);
+			else if (argc <= 6)
+				order_five(&a, &b);
+			else
+				order(&a, &b);
+		}
 	}
 	return (0);
 }
-
-/*ft_printf("Primero la lista sin cambiar los dos primeros\n");
-		show_list(&a);
-		sa(&a);
-		ft_printf("Ahora cambiados\n");
-		show_list(&a);
-		pb(&a, &b);
-		pb(&a, &b);
-		ft_printf("Ahora a sin el primer elemento\n");
-		show_list(&a);
-		ft_printf("Ahora b con el primer elemento de a\n");
-		show_list(&b);
-		ss(&a, &b);
-		ft_printf("Los dos elementos del stack de a cambiados\n");
-		show_list(&a);
-		ft_printf("Los dos elementos del stack de b cambiados\n");
-		show_list(&b);
-		rr(&a, &b);
-		ft_printf("Todos los elementos de a rotados hacia arriba\n");
-		show_list(&a);
-		ft_printf("Ahora los de b\n");
-		show_list(&b);
-		rrr(&a, &b);
-		ft_printf("Todos los elementos de a rotados hacia abajo\n");
-		show_list(&a);
-		ft_printf("Ahora los de b\n");
-		show_list(&b);*/
-/*
+/*	ft_printf("Primero la lista sin cambiar los dos primeros\n");
+	show_list(&a);
+	sa(&a, 0);
+	ft_printf("Ahora cambiados\n");
+	show_list(&a);
+	pb(&a, &b);
+	pb(&a, &b);
+	ft_printf("Ahora a sin el primer elemento\n");
+	show_list(&a);
+	ft_printf("Ahora b con el primer elemento de a\n");
+	show_list(&b);
+	ss(&a, &b);
+	ft_printf("Los dos elementos del stack de a cambiados\n");
+	show_list(&a);
+	ft_printf("Los dos elementos del stack de b cambiados\n");
+	show_list(&b);
+	rr(&a, &b);
+	ft_printf("Todos los elementos de a rotados hacia arriba\n");
+	show_list(&a);
+	ft_printf("Ahora los de b\n");
+	show_list(&b);
+	rrr(&a, &b);
+	ft_printf("Todos los elementos de a rotados hacia abajo\n");
+	show_list(&a);
+	ft_printf("Ahora los de b\n");
+	show_list(&b);
+}
 Se puede usar write, read, malloc, free y exit*/

@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-void	ra(t_stack *a)
+void	ra(t_stack *a, int i)
 {
 	int	size_s;
 	int	nbr;
@@ -20,21 +20,27 @@ void	ra(t_stack *a)
 	size_s = size(a);
 	nbr = (*a)->nbr;
 	if (size_s == 2)
-		sa(a);
+		sa(a, i);
 	if (size_s > 2)
 	{
 		*a = (*a)->next;
 		insert_by_end(a, nbr);
 	}
+	if (i == 1)
+	{
+		ft_printf("rb\n");
+		return ;
+	}
+	ft_printf("ra\n");
 }
 
 void	rb(t_stack *b)
 {
-	ra(b);
+	ra(b, 1);
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
-	ra(a);
-	ra(b);
+	ra(a, 0);
+	ra(b, 1);
 }

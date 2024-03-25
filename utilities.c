@@ -6,7 +6,7 @@
 /*   By: dtorres- <dtorres-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 17:04:33 by dtorres-          #+#    #+#             */
-/*   Updated: 2023/05/30 17:01:18 by dtorres-         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:56:21 by dtorres-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	insert_by_start(t_stack *l, long long nbr)
 {
 	t_node	*aux;
 
-	aux = (t_node *)malloc(1*sizeof(t_node));
+	aux = (t_node *)malloc(1 * sizeof(t_node));
 	aux->nbr = nbr;
 	aux->next = *l;
 	aux->prev = NULL;

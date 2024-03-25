@@ -38,13 +38,9 @@ static void	ft_allocate(char **new, char const *s, char c)
 
 static int	ft_count_c(char const *s, char c)
 {
-	int	i;
 	int	count;
-	int	check;
 
-	check = 1;
 	count = 0;
-	i = 0;
 	while (*s)
 	{
 		if (*s != c)
